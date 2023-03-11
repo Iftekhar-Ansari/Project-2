@@ -11,7 +11,7 @@ let inp;
 
 async function getData(inp){
     try {
-        var res = await fetch(`http://localhost:3000/electronicsData?key=phone&_sort=price&_order=${inp}`);
+        var res = await fetch(`https://clone-ebay-test-api.onrender.com/electronicsData?key=tv&_sort=price&_order=${inp}`);
         var jsonData =await res.json();
         display(jsonData);
     } catch (error) {
@@ -20,11 +20,11 @@ async function getData(inp){
 }
 getData();
 
-// var phoneData = JSON.parse(localStorage.getItem("detail")) || [];
 function display(data){
-    container.textContent="";
+    container.textContent = "";
     data.forEach(elm=>{
         var anchor = document.createElement("div");
+        anchor.setAttribute("id","imgAppend");
         var image = document.createElement("img");
         image.src = elm.image;
         var div = document.createElement("div");
@@ -37,6 +37,7 @@ function display(data){
                 image: elm.image,
                 des: elm.description,
                 price: elm.price,
+                qty:1
             }
             // phoneData.push(obj);
             localStorage.setItem("detail",JSON.stringify(obj));

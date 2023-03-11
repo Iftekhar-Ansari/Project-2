@@ -60,7 +60,7 @@ async function getData(inp,brand){
         console.log(key);
         // let brand= localStorage.getItem("brand") || "";
         
-        var res = await fetch(`http://localhost:3000/fashionData?key=${key}&brand=${brand}&_sort=price&_order=${inp}`);
+        var res = await fetch(`https://clone-ebay-test-api.onrender.com/fashionData?key=${key}&brand=${brand}&_sort=price&_order=${inp}`);
         var jsonData = await res.json();
         displayData(jsonData);
     } catch (error) {
@@ -74,7 +74,7 @@ async function getCat(){
         console.log(key);
         // let brand= localStorage.getItem("brand") || "";
         
-        var res = await fetch(`http://localhost:3000/fashionData?key=${key}`);
+        var res = await fetch(`https://clone-ebay-test-api.onrender.com/fashionData?key=${key}`);
         var jsonData = await res.json();
         displayData(jsonData);
     } catch (error) {
@@ -87,7 +87,7 @@ async function getAllData(){
         // console.log(key);
         // let brand= localStorage.getItem("brand") || "";
         
-        var res = await fetch(`http://localhost:3000/fashionData`);
+        var res = await fetch(`https://clone-ebay-test-api.onrender.com/fashionData`);
         var jsonData = await res.json();
         displayData(jsonData);
     } catch (error) {
@@ -112,6 +112,7 @@ function displayData(data){
     container.innerHTML = "";
     data.map((elm)=>{
         var ancor = document.createElement("div");
+        ancor.setAttribute("id","imgAppend");
         var image = document.createElement("img");
         image.src = elm.image;
         var div = document.createElement("div");
@@ -121,6 +122,16 @@ function displayData(data){
         var brand = document.createElement("h4");
         brand.innerText = elm.brand;
         ancor.append(image,div,price,brand);
+        // anchor.addEventListener("click",()=>{
+        //     var obj = {
+        //         image: elm.image,
+        //         des: elm.description,
+        //         price: elm.price,
+        //     }
+        //     // phoneData.push(obj);
+        //     localStorage.setItem("detail",JSON.stringify(obj));
+        //     location.href = "detailPage.html";
+        // })
         container.append(ancor);
     })
 }

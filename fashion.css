@@ -90,6 +90,13 @@
 }
 .right-div img{
    width: 100%;
+   border: 2px rgb(73, 14, 8);
+   border-radius: 50px;
+   cursor: pointer;
+}
+.right-div img:hover{
+    scale: 1.2;
+    border-radius: 25px;
 }
 #img-box{
     display: flex;
